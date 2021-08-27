@@ -261,6 +261,8 @@ en:
       team_leader: 'Team Leader'
       leader: 'Leader'
       invitation_placeholder: 'Enter the email address of the person you want to invite'
+      owner_placeholder: 'Enter the email address of the person you want to owne'
+      
       edit_profile: 'Edit Profile'
       team_you_belong_to: 'The team you belong to'
       posted_articles: 'List of posted articles'
@@ -270,6 +272,7 @@ en:
       delete: 'Delete'
       create: 'Create'
       invite: 'Invite'
+      assign: "Assign"
     top:
       line1: 'it is an application to share a specific issue (agenda) easily'
       line2: 'for each member separately for each team or agenda'
@@ -278,4 +281,5 @@ en:
     common:
       team: 'Team'
     agenda_destroyed_notification: "Agenda Destroyed Notification"
+    assign_owner: "Assign Owner"
     
