@@ -50,6 +50,12 @@
                   <p>+ <%= I18n.t('views.messages.create_article') %></p>
                 <% end %>
               </li>
+              <li class="nav-item">
+                <%= link_to agenda_path(agenda), class: 'nav-link btn-danger mb-3 btn-sm', 
+                method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <p> <i class="fa fa-trash"></i> <%= I18n.t('views.messages.destroy_agenda') %></p>
+                <% end %>
+              </li>
             </ul>
           </li>
         <% end %>
