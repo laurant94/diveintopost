@@ -249,6 +249,7 @@ en:
       team_build2: 'Create Team'
       select_team: 'Select Team'
       create_agenda: 'Create Agenda'
+      destroy_agenda: 'Create Agenda'
       input_agenda_title: 'Input title'
       input_team_name: 'Input a team name'
       recent_posts: 'Recent Posts'
@@ -260,6 +261,8 @@ en:
       team_leader: 'Team Leader'
       leader: 'Leader'
       invitation_placeholder: 'Enter the email address of the person you want to invite'
+      owner_placeholder: 'Enter the email address of the person you want to owne'
+      
       edit_profile: 'Edit Profile'
       team_you_belong_to: 'The team you belong to'
       posted_articles: 'List of posted articles'
@@ -269,6 +272,7 @@ en:
       delete: 'Delete'
       create: 'Create'
       invite: 'Invite'
+      assign: "Assign"
     top:
       line1: 'it is an application to share a specific issue (agenda) easily'
       line2: 'for each member separately for each team or agenda'
@@ -276,3 +280,6 @@ en:
       line4: 'and you will not be able to pick it up, so it is an internal application to avoid it'
     common:
       team: 'Team'
+    agenda_destroyed_notification: "Agenda Destroyed Notification"
+    assign_owner: "Assign Owner"
+    
