@@ -21,7 +21,8 @@ module Keijiban
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    config.time_zone = 'Asia/Tokyo'
+    config.time_zone = 'Africa/Porto-Novo'
+    config.active_record.default_timezone = :local
     config.i18n.default_locale = :en
 
     config.generators do |g|

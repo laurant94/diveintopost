@@ -249,6 +249,7 @@ en:
       team_build2: 'Create Team'
       select_team: 'Select Team'
       create_agenda: 'Create Agenda'
+      destroy_agenda: 'Create Agenda'
       input_agenda_title: 'Input title'
       input_team_name: 'Input a team name'
       recent_posts: 'Recent Posts'
@@ -276,3 +277,5 @@ en:
       line4: 'and you will not be able to pick it up, so it is an internal application to avoid it'
     common:
       team: 'Team'
+    agenda_destroyed_notification: "Agenda Destroyed Notification"
+    
