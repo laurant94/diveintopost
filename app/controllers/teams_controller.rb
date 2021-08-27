@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_team, only: %i[show edit update destroy assign_owner]
+  before_action :verifie_owner, only: %i[edit update destroy assign_owner]
+  # before_action :has_me, only: %i[destroy]
 
   def index
     @teams = Team.all
@@ -62,5 +64,13 @@ class TeamsController < ApplicationController
 
   def team_params
     params.fetch(:team, {}).permit %i[name icon icon_cache owner_id keep_team_id]
+  end
+
+  def verifie_owner
+    redirect_to team_path(@team) unless current_user === @team.owner
+  end
+
+  def has_me
+    redirect_to team_path(@team) unless current_user === @team.owner 
   end
 end

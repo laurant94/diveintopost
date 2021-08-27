@@ -10,7 +10,7 @@
               <%= image_tag default_img(@team.icon_url), class: 'img' %><br>
               <%= @team.name %>
             </div>
-            <%= link_to I18n.t('views.messages.edit_team'), edit_team_path(@team), class: 'btn btn-success btn-block mt-3' %>
+            <%= link_to I18n.t('views.messages.edit_team'), edit_team_path(@team), class: 'btn btn-success btn-block mt-3'  if current_user === @team.owner %>
           </div>
 
           <div class="col-md-8">
@@ -34,17 +34,19 @@
                   <td><label style="background-color: red"><%= I18n.t('views.messages.leader') %></label>：<%= @team.owner.email %></td>
                 </tr>
               </table>
-              <%= form_for :owner, html: { multipart: true, class: "mb-4" }, url: assign_owner_to_team_path do |f| %>
-                    <div class="input-group input-group-sm">
-                      <%= f.select :email, options_for_select( @team.members.map{ |m| [m.email]}, selected: @team.owner.email), 
-                      {include_blank: true}, {class: "form-control", placeholder: I18n.t('views.messages.owner_placeholder')} %>
-                      <span class="input-group-append">
-                        <button type="submit" class="btn btn-info btn-flat"><%= I18n.t('views.button.assign') %></button>
-                      </span>
-                    </div>
-                    <%= content_tag('small', I18n.t('views.messages.invitation_placeholder')) %>
-                  <% end %>
-
+              <% if current_user === @team.owner %>
+                <%= form_for :owner, html: { multipart: true, class: "mb-4" }, url: assign_owner_to_team_path do |f| %>
+                  <div class="input-group input-group-sm">
+                    <%= f.select :email, options_for_select( @team.members.map{ |m| [m.email]}, selected: @team.owner.email), 
+                    {include_blank: true}, {class: "form-control", placeholder: I18n.t('views.messages.owner_placeholder')} %>
+                    <span class="input-group-append">
+                      <button type="submit" class="btn btn-info btn-flat"><%= I18n.t('views.button.assign') %></button>
+                    </span>
+                  </div>
+                  <%= content_tag('small', I18n.t('views.messages.invitation_placeholder')) %>
+                <% end %>
+              <% end %>
+              
               <h5><%= I18n.t('views.messages.team_members2') %></h5>
               <table class="table">
                 <tbody>
@@ -52,7 +54,7 @@
                     <tr>
                       <td><%= image_tag 'default.jpg', size: '40x40' %></td>
                       <td><%= assign.user.email %></td>
-                      <td><%= link_to I18n.t('views.button.delete'), team_assign_path(@team, assign), method: :delete, class: 'btn btn-sm btn-danger' %></td>
+                      <td><%= link_to I18n.t('views.button.delete'), team_assign_path(@team, assign), method: :delete, class: 'btn btn-sm btn-danger' if current_user == assign.user or current_user == @team.owner %></td>
                     </tr>
                   <% end %>
                 </tbody>
