@@ -266,3 +266,5 @@ ja:
       line4: '事態が起こってしまうので、それを回避するための社内用アプリケーションです'
     common:
       team: 'チーム'
+    agenda_destroyed_notification: "Agenda Destroyed Notification"
+  

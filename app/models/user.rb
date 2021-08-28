@@ -26,4 +26,6 @@ class User < ApplicationRecord
   def self.generate_password
     SecureRandom.hex(10)
   end
+
+  
 end
