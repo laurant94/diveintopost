@@ -12,4 +12,11 @@ class AssignMailer < ApplicationMailer
     @agenda = agenda
     mail( to: @user.email, subject: I18n.t("vview.messages.agenda_destroyed_notification") )
   end
+
+  def assign_owner(user, team)
+    @user = user
+    @team = team
+    mail(to: @user.email, subject: "You are the new team owner")
+  end
+
 end

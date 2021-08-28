@@ -44,6 +44,7 @@ class TeamsController < ApplicationController
     owner = User.find_by(email: params.require(:owner).permit(:email)[:email])
     @team.owner = owner
     @team.save
+    AssignMailer.assign_owner(owner, @team).deliver
     redirect_to team_path(@team)
   end
 

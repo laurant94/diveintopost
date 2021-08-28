@@ -11,7 +11,6 @@
         <h3 style="color: white;"><%= @working_team.name.truncate(15) %></h3>
       </div>
     </div>
-
     <div class="user-panel mt-3 pb-3 mb-3">
       <div class="info">
         <a href="#" class="d-block mb-1"><%= I18n.t('views.messages.create_agenda') %></a>
@@ -30,13 +29,17 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <% @working_team.agendas.each do |agenda| %>
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="fa fa-circle-o nav-icon"></i>
-              <p>
-                <%= agenda.title %>
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
+            <div class="input-group input-group-sm">
+              <%= link_to content_tag('i','', class: "fa fa-trash"), agenda_path(agenda), class: 'btn btn-danger', 
+                    method: :delete, data: { confirm: "Are you sure?" } if current_user === @working_team.owner %>
+              <a href="#" class="nav-link">
+                <i class="fa fa-circle-o nav-icon"></i>
+                <p>
+                  <%= agenda.title %>
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+            </div>
             <ul class="nav nav-treeview" style="display: block;">
               <% agenda.articles.each do |article| %>
                 <li class="nav-item">
@@ -48,12 +51,6 @@
               <li class="nav-item">
                 <%= link_to new_agenda_article_path(agenda), class: 'nav-link' do %>
                   <p>+ <%= I18n.t('views.messages.create_article') %></p>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to agenda_path(agenda), class: 'nav-link btn-danger mb-3 btn-sm', 
-                method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <p> <i class="fa fa-trash"></i> <%= I18n.t('views.messages.destroy_agenda') %></p>
                 <% end %>
               </li>
             </ul>
